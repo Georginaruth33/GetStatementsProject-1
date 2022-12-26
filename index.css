@@ -1,0 +1,29 @@
+h3{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    text-align: center;
+}
+form{
+    text-align: justify;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 20px 30px;
+}
+label, input{
+    margin: 18px;
+    font-size: 20px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    width: 80%;
+    align-self: center;
+}
+button{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    width: 100px;
+    background-color: lightblue;
+    margin: 20px 30px 40px 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 20px;
+}
