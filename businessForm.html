@@ -1,59 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
-    <title>Get Statements Form</title>
+    <title>Get Statements</title>
 </head>
+
 <body>
-    <h3>Get Financial Statements</h3>
-    <form action="">
-        <input type="text" id="companyName" placeholder="Company Name">
-        <br>
-        <input type="date" id="start" placeholder="Start of Financial Period">
-        <br>
-        <input type="date" id="end" placeholder="End of Financial Period">
-        <br>
-        <label for="currency">Currency: </label>
-        <select name="currency" id="currency">
-            <option value="ksh">Ksh</option>
-            <option value="ush">Ush</option>
-            <option value="tsh">Tsh</option>
-        </select>
-        <br>
-        <input type="number" step="1" id="overheads" placeholder="Overheads">
-        <br>
-        <input type="number" step="1" id="sales" placeholder="Total Sales">
-        <br>
-        <input type="number" step="1" id="costOfGoods" placeholder="Cost of Goods">
-        <br>
-        <input type="number" step="1" id="cash" placeholder="Cash">
-        <br>
-        <input type="number" step="1" id="debtors" placeholder="Debtors">
-        <br>
-        <input type="number" step="1" id="others" placeholder="Others">
-        <br>
-        <input type="number" step="1" id="machinery" placeholder="Machinery and Equipment">
-        <br>
-        <input type="number" step="1" id="land" placeholder="Land and Building">
-        <br>
-        <input type="number" step="1" id="furniture" placeholder="Furniture and Fixtures">
-        <br>
-        <input type="number" step="1" id="software" placeholder="Software">
-        <br>
-        <input type="number" step="1" id="creditors" placeholder="Creditors">
-        <br>
-        <input type="number" step="1" id="payables" placeholder="Other Payables">
-        <br>
-        <input type="number" step="1" id="loans" placeholder="Long Term Loans">
-        <br>
-        <input type="number" step="1" id="funds" placeholder="Owners Funds">
-        <br>
-        <div>
-            <button>Submit</button>
+    <form action="financialFigures.php" method="post">
+        <div class="container">
+            <div class="rightbox">
+                <div class="companyDetails">
+                    <h1>Financial Figures</h1>
+                    <h2>Company Name</h2>
+                    <input type="text" id="companyName" name="company_name" autocomplete="off">
+                    <h2>Overheads</h2>
+                    <input type="number" id="overheads" name="overheads">
+                    <h2>Total Sales</h2>
+                    <input type="number" id="sales" name="sales">
+                    <h2>Cost of Goods</h2>
+                    <input type="number" id="costOfGoods" name="cost_of_goods">
+                    <h2>Cash</h2>
+                    <input type="number" id="cash" name="cash">
+                    <h2>Debtors</h2>
+                    <input type="number" id="debtors" name="debtors">
+                    <h2>Others</h2>
+                    <input type="number" id="others" name="others">
+                    <h2>Machinery and Equipment</h2>
+                    <input type="number" id="machinery" name="machinery_and_equipment">
+                    <h2>Land and Buildings</h2>
+                    <input type="number" id="land" name="land_and_buildings">
+                    <h2>Furniture and Fixtures</h2>
+                    <input type="number" id="furniture" name="furniture_and_fixtures">
+                    <h2>Software</h2>
+                    <input type="number" id="software" name="software">
+                    <h2>Creditors</h2>
+                    <input type="number" id="creditors" name="creditors">
+                    <h2>Other payables</h2>
+                    <input type="number" id="payables" name="other_payables">
+                    <h2>Long ter Loans</h2>
+                    <input type="number" id="loans" name="long_term_loans">
+                    <h2>Owners Funds</h2>
+                    <input type="number" id="funds" name="owners_funds">
+                    <input type="submit" name="submit" value="Submit" class="btn">
+                </div>
+            </div>
         </div>
     </form>
 </body>
+
 </html>
+\

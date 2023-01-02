@@ -1,29 +1,80 @@
-h3{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 30px;
-    text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,900|Montserrat|Roboto');
+
+body {
+    background: linear-gradient(to right, #3FB6A8, #7ED386);
 }
-form{
-    text-align: justify;
-    font-family: 'Times New Roman', Times, serif;
-    margin: 20px 30px;
+
+.container {
+    width: 100%;
+    height: 60%;
+    margin: 30px;
+    position: relative;
 }
-label, input{
-    margin: 18px;
-    font-size: 20px;
-    border-top: 0px;
-    border-left: 0px;
-    border-right: 0px;
+
+.companyDetails {
+    transition: opacity .5s ease-in;
+    position: absolute;
+    width: 70%;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+    font-size: 2em;
+    margin-top: 40px;
+    margin-bottom: 35px;
+}
+
+h2 {
+    color: black;
+    font-family: 'Roboto', sans-serif;
     width: 80%;
-    align-self: center;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin-left: 2px;
 }
-button{
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 20px;
-    width: 100px;
-    background-color: lightblue;
-    margin: 20px 30px 40px 50px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-radius: 20px;
+
+input,
+select {
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    background: 0;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    ;
+    font-size: .7em;
+    padding: 7px 0;
+    margin-bottom: 10px;
+    color: #000000;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.btn {
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-size: 13px;
+    border: none;
+    color: black;
+    margin-top: 20px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    width: 8%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.btn:focus {
+    border-color: white;
 }
