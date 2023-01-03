@@ -5,52 +5,71 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="index.css">
     <title>Get Statements</title>
 </head>
 
 <body>
-    <form action="financialFigures.php" method="post">
-        <div class="container">
-            <div class="rightbox">
-                <div class="companyDetails">
+    <div class="statements">
+        <a href="downloadForms.php">View financial details</a>
+        <a href="profit_and_loss.php">View profit and loss statement</a>
+        <a href="statement_of_cashflows.php">view statement of cashflows</a>
+        <a href="balance_sheet.php">view balance sheet</a>
+        <a href="logout.php">Logout</a>
+    </div>
+    <div>
+        <form action="financialFigures.php" method="post">
+            <div class="container">
+                <div>
+                    <h1>Accounting Details</h1>
+                    <h2>Beginning of Accounting Period</h2>
+                    <input type="date" name="beginning_acc" autocomplete="off">
+                    <h2>End of Accounting Period</h2>
+                    <input type="date" name="end_acc" autocomplete="off">
+                    <h2>Currency</h2>
+                    <select name="currency">
+                        <option value="Ksh">Ksh</option>
+                        <option value="Tsh">Tsh</option>
+                        <option value="Ush">Ush</option>
+                    </select>
+                </div>
+                <div>
                     <h1>Financial Figures</h1>
-                    <h2>Company Name</h2>
-                    <input type="text" id="companyName" name="company_name" autocomplete="off">
                     <h2>Overheads</h2>
-                    <input type="number" id="overheads" name="overheads">
+                    <input type="number" id="overheads" name="overheads" autocomplete="off">
                     <h2>Total Sales</h2>
-                    <input type="number" id="sales" name="sales">
+                    <input type="number" id="sales" name="sales" autocomplete="off">
                     <h2>Cost of Goods</h2>
-                    <input type="number" id="costOfGoods" name="cost_of_goods">
+                    <input type="number" id="costOfGoods" name="cost_of_goods" autocomplete="off">
                     <h2>Cash</h2>
-                    <input type="number" id="cash" name="cash">
+                    <input type="number" id="cash" name="cash" autocomplete="off">
                     <h2>Debtors</h2>
-                    <input type="number" id="debtors" name="debtors">
+                    <input type="number" id="debtors" name="debtors" autocomplete="off">
                     <h2>Others</h2>
-                    <input type="number" id="others" name="others">
+                    <input type="number" id="others" name="others" autocomplete="off">
                     <h2>Machinery and Equipment</h2>
-                    <input type="number" id="machinery" name="machinery_and_equipment">
+                    <input type="number" id="machinery" name="machinery_and_equipment" autocomplete="off">
                     <h2>Land and Buildings</h2>
-                    <input type="number" id="land" name="land_and_buildings">
+                    <input type="number" id="land" name="land_and_buildings" autocomplete="off">
                     <h2>Furniture and Fixtures</h2>
-                    <input type="number" id="furniture" name="furniture_and_fixtures">
+                    <input type="number" id="furniture" name="furniture_and_fixtures" autocomplete="off">
                     <h2>Software</h2>
-                    <input type="number" id="software" name="software">
+                    <input type="number" id="software" name="software" autocomplete="off">
                     <h2>Creditors</h2>
-                    <input type="number" id="creditors" name="creditors">
+                    <input type="number" id="creditors" name="creditors" autocomplete="off">
                     <h2>Other payables</h2>
-                    <input type="number" id="payables" name="other_payables">
+                    <input type="number" id="payables" name="other_payables" autocomplete="off">
                     <h2>Long ter Loans</h2>
-                    <input type="number" id="loans" name="long_term_loans">
+                    <input type="number" id="loans" name="long_term_loans" autocomplete="off">
                     <h2>Owners Funds</h2>
-                    <input type="number" id="funds" name="owners_funds">
+                    <input type="number" id="funds" name="owners_funds" autocomplete="off">
                     <input type="submit" name="submit" value="Submit" class="btn">
                 </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </body>
 
 </html>
-\
