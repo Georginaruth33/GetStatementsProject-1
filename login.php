@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['company_id'] = $company_id;
     }
 
-    if (mysqli_num_rows($result)) {
+    if (mysqli_num_rows($result)>0) {
         echo '<script> alert("Success"); window.location.href="businessForm.html";</script>';
     } else if (empty($company_name) || empty($pass)) {
         echo '<script> alert("Please enter all values"); window.location.href="login.html";</script>';

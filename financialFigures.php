@@ -34,7 +34,7 @@ $con = mysqli_connect($host, $username, $password, $dbname);
 // to ensure that the connection is made
 if (!$con) {
     die("Connection failed!" . mysqli_connect_error());
-} else if (empty($beginning_acc) || empty($end_acc) || empty($overheads) || empty($sales) || empty($cost_of_goods) || empty($cash) && empty($debtors) || empty($others) || empty($furniture_and_fixtures) || empty($land_and_buildings) || empty($machinery_and_equipment) || empty($other_payables) || empty($long_term_loans) || empty($owners_funds) || empty($software) || empty($creditors)) {
+} else if (empty($beginning_acc) || empty($end_acc)) {
     echo '<script> alert("Please enter all values"); window.location.href="businessForm.html";</script>';
 } else {
     $company_id = $_SESSION['company_id'];

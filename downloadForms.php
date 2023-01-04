@@ -1,5 +1,7 @@
 <?php
+//start session
 session_start();
+
 $host = "localhost";
 $username = "root";
 $password = "";
@@ -36,7 +38,7 @@ $result = mysqli_query($con, $query);
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Beginning of Accounting Period</th>
-                    <th>End of accounting period</th>
+                    <th scope="col">End of accounting period</th>
                     <th scope="col">Profit and loss</th>
                     <th scope="col">Statement of cashflows</th>
                     <th scope="col">Balance sheet</th>
@@ -44,19 +46,21 @@ $result = mysqli_query($con, $query);
             </thead>
             <tbody>
                 <?php
-                while ($rows = mysqli_fetch_array($result)) {
+                while ($rows = mysqli_fetch_assoc($result)) {
                 ?>
                     <tr>
                         <td><?php echo $rows['beginning_acc'] ?></td>
                         <td><?php echo $rows['end_acc'] ?></td>
-                        <td><a href="profit_and_loss.php">View profit and loss statement</a></td>
-                        <td><a href="statement_of_cashflows.php">view statement of cashflows</a></td>
-                        <td><a href="balance_sheet.php">view balance sheet</a></td>
+                        <td><a href="profit_and_loss.php?id=<?php echo $rows['id']; ?>">View profit and loss statement</a></td>
+                        <td><a href="statement_of_cashflows.php?id=<?php echo $rows['id']; ?>">view statement of cashflows</a></td>
+                        <td><a href="balance_sheet.php?id=<?php echo $rows['id']; ?>">view balance sheet</a></td>
                     </tr>
                 <?php
                 }
                 ?>
             </tbody>
+            <?php
+            ?>
         </table>
     </div>
 </body>

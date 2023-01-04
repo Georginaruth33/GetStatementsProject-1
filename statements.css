@@ -65,27 +65,29 @@ tbody td {
 tbody th {
 	width: cal(100% - 12rem);
 }
+tr.total{
+	color:aliceblue
+}
 
-tr.total {
+tr.total,tr.data-total {
 	border-bottom: 4px double #0a0a23;
 	font-weight: bold;
 }
-
-tr.total th {
+tr.total,tr.data-total th {
 	text-align: left;
 	padding: 0.5rem 0 0.25rem 0.5rem;
 }
 
-tr.total td {
+tr.total td,tr.data-total td {
 	text-align: right;
 	padding: 0 0.25rem;
 }
 
-tr.total td:last-of-type {
+tr.total td:last-of-type,tr.data-total td:last-of-type {
 	padding-right: 0.5rem;
 }
 
-tr.total:hover {
+tr.total:hover{
 	background-color: #99c9ff;
 }
 
