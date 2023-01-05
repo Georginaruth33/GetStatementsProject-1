@@ -22,11 +22,9 @@ if (isset($_GET['id'])) {
     $rs = mysqli_query($con, $statement);
     $row = mysqli_fetch_array($rs);
 
-    $total_assets = $row['total_sales'] + $row['cash'] + $row['debtors'] + $row['others'] + $row['machinery_and_equipment'] + $row['land_and_buildings'] + $row['furniture_and_fixtures'] + $row['software'];
-    $total_current_liabilities = $row['creditors'] + $row['other_payables'];
-    $total_non_current_liabilities = $row['long_term_loans'];
-    $retained_earnings = $total_assets - $row['overheads'] + $row['cost_of_goods'];
-    $total_shareholders_equity = $row['owners_funds'] - $retained_earnings;
+    $net_operating = $row['total_sales']-$row['overheads']-$row['debtors']-$row['cost_of_goods']+$row['creditors'];
+    $net_investing = $row['machinery_and_equipment'] + $row['land_and_buildings'] + $row['furniture_and_fixtures'] + $row['software'];
+    $net_financing = $row['other_payables'] + $row['long_term_loans'] + $row['owners_funds'];
 }
 ?>
 <!DOCTYPE html>
@@ -62,61 +60,119 @@ if (isset($_GET['id'])) {
                 <table>
                     <thead>
                         <tr>
-                            <th class="current"></th>
+                            <th class="current">Cashflows from Operating Activities</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="total">
-                            <th>Net cashflow from investing activities</th>
-                            <td class="current"><?php echo $total_assets ?></td>
+                        <tr class="data">
+                            <th class="description">
+                                Receipts from Income
+                            </th>
+                            <td class="current"><?php echo $row['total_sales'] ?></td>
                         </tr>
                         <tr class="data">
-                            <th class="description">Current liabilities <span class="description">Creditors</span><span class="description">Other liablities</span></th>
+                            <th class="description">
+                                Payments of Expences
+                            </th>
+                            <td class="current"><?php echo $row['overheads'] ?></td>
+                        </tr>
+                        <tr class="data">
+                            <th class="description">
+                                Funding to Debtors
+                            </th>
+                            <td class="current"><?php echo $row['debtors'] ?></td>
+                        </tr>
+                        <tr class="data">
+                            <th class="description">
+                                Stock Movement
+                            </th>
+                            <td class="current"><?php echo $row['cost_of_goods'] ?></td>
+                        </tr>
+                        <tr class="data">
+                            <th class="description">
+                                Funding from Creditors
+                            </th>
+                            <td class="current"><?php echo $row['creditors'] ?></td>
                         </tr>
                         <tr class="total">
-                            <th>Total current liabilities</th>
-                            <td class="current"><?php echo $total_current_liabilities ?></td>
+                            <th>Net Cash from Operating Activities</th>
+                            <td class="current"><?php echo $net_operating ?></td>
                         </tr>
                     </tbody>
                 </table>
                 <table>
                     <thead>
                         <tr>
-                            <th><span class="sr-only">2021</span></th>
+                            <th class="current">Cashflows from Investing Activities</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="data">
-                            <th>Non current liabilities <span class="description">Long term loans</span></th>
+                            <th class="description">
+                                Payments for property, plant, and equipment
+                            </th>
+                            <td class="current"><?php echo $net_investing ?></td>
                         </tr>
                         <tr class="total">
-                            <th>Total Non Current liaibilities</th>
-                            <td class="current"><?php echo $total_non_current_liabilities ?></td>
+                            <th>Net Cash from Investing Activities</th>
+                            <td class="current"><?php echo $net_investing ?></td>
                         </tr>
                     </tbody>
                 </table>
                 <table>
                     <thead>
                         <tr>
-                            <th><span class="sr-only">2021</span></th>
+                            <th class="current">Cashflows from Financing Activities</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="data">
-                            <th>Shareholders equity<span class="description">Owners funds</span><span class="description">Retained Earnings</span></th>
+                            <th class="description">
+                                Increase in Short-term Debt
+                            </th>
+                            <td class="current"><?php echo $row['other_payables'] ?></td>
+                        </tr>
+                        <tr class="data">
+                            <th class="description">
+                                Increase in Long-term Debt
+                            </th>
+                            <td class="current"><?php echo $row['long_term_loans'] ?></td>
+                        </tr>
+                        <tr class="data">
+                            <th class="description">
+                                Proceeds from Owner(Equity)
+                            </th>
+                            <td class="current"><?php echo $row['owners_funds'] ?></td>
                         </tr>
                         <tr class="total">
-                            <th>Total Shareholders equity</th>
-                            <td class="current"><?php echo $total_shareholders_equity ?></td>
+                            <th>Net Cash from financing activities</th>
+                            <td class="current"><?php echo $net_financing ?></td>
                         </tr>
-                        <tr class="total">
-                            <th>Total Liabilities</th>
-                            <td class="current"><?php echo $total_shareholders_equity + $total_current_liabilities + $total_non_current_liabilities ?></td>
+                        <tr class="data">
+                            <th class="description">
+                                Net increase in cash
+                            </th>
+                            <td class="current"><?php echo $net_financing + $net_operating + (-$net_investing) ?></td>
+                        </tr>
+                        <tr class="data">
+                            <th class="description">
+                                Cash balance start of year
+                            </th>
+                            <td class="current">0</td>
+                        </tr>
+                        <tr class="data">
+                            <th class="description">
+                                Cash balance end of year
+                            </th>
+                            <td class="current"><?php echo $net_financing + $net_operating + (-$net_investing) ?></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </section>
+        <div>
+            <button class="btn"><a href="generatePdf.php">Download</a></button>
+        </div>
     </main>
 </body>
 

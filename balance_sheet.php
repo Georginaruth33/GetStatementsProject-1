@@ -23,11 +23,11 @@ if (isset($_GET['id'])) {
     $row = mysqli_fetch_array($rs);
 
     $total_current_assets = $row['cash'] + $row['debtors'] + $row['others'];
-    $total_non_current_assets = $row['machinery_and_equipment'] + $row['land_and_buildings'] + $row['furniture_and_fixtures']+$row['software'];
+    $total_non_current_assets = $row['machinery_and_equipment'] + $row['land_and_buildings'] + $row['furniture_and_fixtures'] + $row['software'];
     $total_current_liabilities = $row['creditors'] + $row['other_payables'];
     $total_non_current_liabilities = $row['long_term_loans'];
-    $retained_earnings = $row['overheads']+($row['total_sales']-$row['cost_of_goods']);
-    $total_shareholders_equity = $row['owners_funds'] - $retained_earnings;
+    $retained_earnings = ($row['total_sales'] - $row['cost_of_goods'])-$row['overheads'];
+    $total_shareholders_equity = $row['owners_funds'] + $retained_earnings;
 }
 ?>
 <!DOCTYPE html>
@@ -68,20 +68,62 @@ if (isset($_GET['id'])) {
                     </thead>
                     <tbody>
                         <tr class="data">
-                            <th>Current Assets <span class="description">Cash</span><span class="description">Debtors</span><span class="description">Others</span></th>
+                            <th>Current Assets</th>
+                        </tr>
+                        <tr class="data">
+                            <th class="description">
+                                Cash
+                            </th>
+                            <td class="current"><?php echo $row['cash'] ?></td>
+                        </tr>
+                        <tr class="data">
+                            <th class="description">
+                                Debtors
+                            </th>
+                            <td class="current"><?php echo $row['debtors'] ?></td>
+                        </tr>
+                        <tr class="data">
+                            <th class="description">
+                                Others
+                            </th>
+                            <td class="current"><?php echo $row['others'] ?></td>
+                        </tr>
                         <tr class="data-total">
                             <th>Total Current Assets</th>
                             <td class="current"><?php echo $total_current_assets ?></td>
                         </tr>
                         <tr class="data">
-                            <th>Non Current Assets <span class="description">Machinery and Equipment</span><span class="description">Land and Building</span><span class="description">Furniture and Fixtures</span><span class="description">Software</span></th>
+                            <th>Non Current Assets</th>
+                        </tr>
+                        <tr class="data">
+                            <th class="description">
+                                Machinery and Equipment
+                            </th>
+                            <td class="current"><?php echo $row['machinery_and_equipment'] ?></td>
+                        </tr><tr class="data">
+                            <th class="description">
+                                Land and Buildings
+                            </th>
+                            <td class="current"><?php echo $row['land_and_buildings'] ?></td>
+                        </tr><tr class="data">
+                            <th class="description">
+                                Furniture and Fixtures
+                            </th>
+                            <td class="current"><?php echo $row['furniture_and_fixtures'] ?></td>
+                        </tr>
+                        <tr class="data">
+                            <th class="description">
+                                Software
+                            </th>
+                            <td class="current"><?php echo $row['software'] ?></td>
+                        </tr>
                         <tr class="data-total">
                             <th>Total Non Current Assets</th>
                             <td class="current"><?php echo $total_non_current_assets ?></td>
                         </tr>
                         <tr class="total">
                             <th>Total Assets</th>
-                            <td class="current"><?php echo $total_current_assets+$total_non_current_assets?></td>
+                            <td class="current"><?php echo $total_current_assets + $total_non_current_assets ?></td>
                         </tr>
                     </tbody>
                 </table>
@@ -92,15 +134,33 @@ if (isset($_GET['id'])) {
                         </tr>
                     </thead>
                     <tbody>
-                    <tr class="data">
-                            <th>Current liabilities <span class="description">Creditors</span><span class="description">Other Payables</span></th>
+                        <tr class="data">
+                            <th>Current liabilities</th>
+                        </tr>
+                        <tr class="data">
+                            <th class="description">
+                                Creditors
+                            </th>
+                            <td class="current"><?php echo $row['creditors'] ?></td>
+                        </tr>
+                        <tr class="data">
+                            <th class="description">
+                                Other Payables
+                            </th>
+                            <td class="current"><?php echo $row['other_payables'] ?></td>
                         </tr>
                         <tr class="total">
                             <th>Total Current liaibilities</th>
                             <td class="current"><?php echo $total_current_liabilities ?></td>
                         </tr>
                         <tr class="data">
-                            <th>Non current liabilities <span class="description">Long term loans</span></th>
+                            <th>Non current liabilities</th>
+                        </tr>
+                        <tr class="data">
+                            <th class="description">
+                                Long-term Loans
+                            </th>
+                            <td class="current"><?php echo $row['long_term_loans'] ?></td>
                         </tr>
                         <tr class="total">
                             <th>Total Non Current liaibilities</th>
@@ -111,12 +171,24 @@ if (isset($_GET['id'])) {
                 <table>
                     <thead>
                         <tr>
-                            <th><span class="sr-only">2021</span></th>
+                            <th><span class="sr-only"></span></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="data">
-                            <th>Shareholders equity<span class="description">Owners funds</span><span class="description">Retained Earnings</span></th>
+                            <th>Shareholders equity</th>
+                        </tr>
+                        <tr class="data">
+                            <th class="description">
+                                Owners Funds
+                            </th>
+                            <td class="current"><?php echo $row['owners_funds'] ?></td>
+                        </tr>
+                        <tr class="data">
+                            <th class="description">
+                                Retained Earnings
+                            </th>
+                            <td class="current"><?php echo $retained_earnings ?></td>
                         </tr>
                         <tr class="total">
                             <th>Total Shareholders equity</th>
@@ -130,6 +202,9 @@ if (isset($_GET['id'])) {
                 </table>
             </div>
         </section>
+        <div>
+            <button class="btn">Download</button>
+        </div>
     </main>
 </body>
 
